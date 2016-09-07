@@ -1,0 +1,21 @@
+group 'com.codekul'
+version '1.0.0-BUILD-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task codeRun(type: JavaExec) {
+    if ( project.hasProperty("appArgs") ) args appArgs.split(',')
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.codekul.java.brushup.Main"
+}
